@@ -24,5 +24,6 @@ class Lisa :
 
 if __name__ == "__main__":
 	l = Lisa()
+
 	d = raw_input("")
 	l.display(d)
