@@ -18,7 +18,7 @@ class Lisa :
 		for d in data:
 			sys.stdout.write(d)
 			sys.stdout.flush()
-			time.sleep(0.1el)
+			time.sleep(0.1)
 		print ""
 
 if __name__ == "__main__":
