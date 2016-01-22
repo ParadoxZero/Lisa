@@ -9,20 +9,23 @@
 # 
 import time
 import sys
+import Interpreter
 
 class Lisa :
 
 	def display(self,data):
-		print ""
+		sys.stdout.write("Lisa : ")
 		for d in data:
 			sys.stdout.write(d)
 			sys.stdout.flush()
 			time.sleep(0.1)
+		print ""	
+	def run(self) :
+		while True:
+			user_input = raw_input()
+			lisa_reply = Interpreter.interpreter().interpret(user_input)
+			self.display(lisa_reply)
 		
-	
 
 if __name__ == "__main__":
-	l = Lisa()
-	while True :
-		d = raw_input("")
-		l.display(d)
+	Lisa().run()

@@ -36,13 +36,13 @@ class interpreter :
 				data = " " + data[index + len(f):]
 				data = removeNonNumeric(data).split()
 				if(len(data) < 2):
-					return data + " less"
+					return "The command needs at least 2 numbers"
 				return data
 		for f in self.operator_list :
 			index = data.find(f)
 			if index != -1:
 				return removeNonNumeric(removeSubstring(data,f)).split()
-		return data + " not possible"
+		return "Undefined input: no data available"
 
 	
 
