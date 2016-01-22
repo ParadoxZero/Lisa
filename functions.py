@@ -6,29 +6,28 @@
 def removeSubstring(data,str):
 		index = data.find(str)
 		if index==-1:
-			data = unicode(data, "utf-8")
 			return data
 		tmp = data[index+len(str):]
 		data = data[:index] + " " + tmp
-		data = unicode(data, "utf-8")
 		return data
 
-class calculation :
 
+class calculation :
+	function_list = [' add ', '+', ' subtract ','-' , ' multiply ' , '*',' divide ','/']
+	unwanted_words = [' and ', ' by ', ' from ' ,' to ']	
 	def function(self, data):
-		if data.find(" add ") != -1 :
-			index = data.find(" add ")
-			data = data[index + len(" add "):]
-			data = removeSubstring(data," and ")
-			print data.isnumeric() 
-			if data.isnumeric() :
-				print ".yay."
+		for f in self.function_list :
+			if data.find(f) != -1 :
+				index = data.find(f)
+				data = data[index + len(f):]
+				for rem in self.unwanted_words:
+					data = removeSubstring(data,rem)
 				data = data.split()
-			return data
-		else :
-			return "lame"
+				return data
 
 
 if __name__ =="__main__":
 	c = calculation()
-	print c.function(" add 6 and 5")
+	d = raw_input()
+	d = " " + d 
+	print c.function(d)
