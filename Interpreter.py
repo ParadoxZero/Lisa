@@ -1,6 +1,7 @@
 #
 #
-# A small library of functions
+# Text interpretor Module for Lisa
+#
 #
 
 def removeSubstring(data,str):
@@ -10,44 +11,38 @@ def removeSubstring(data,str):
 	tmp = data[index+len(str):]
 	data = data[:index] + " " + tmp 
 	return data
+
 def removeNonNumeric(data):
 	i = 0
 	strt = -1
+	tmp = ""
 	while(i < len(data)):
-		if((data[i]>'9') or (data[i] < '0')):
-			if(strt == -1):
-				strt = i 
-			if(data[i]==" " and strt != (-1)):
-				data = data[:strt] + data[i:]
-				strt = -1
+		if(data[i] in ['1','2','3','4','5','6','7','8','9','0',' ']):
+				tmp = tmp + data[i]
 		i = i + 1	
-	return data
+	return tmp
 
-class calculation :
+
+class interpreter :
 	# these are the names of operations Lisa can detect
 	function_list = [' add ', ' subtract ', ' multiply ' , ' divide ']
 	operator_list = ['+','-','*','/']
 	# the words Lisa should ignore from list to get purely numeric string
 	#unwanted_words = [' and ', ' by ', ' from ' ,' to ',' them ']	
-	def function(self, data):
-		flag = 0
+	def interpret(self, data):
 		for f in self.function_list :
 			index = data.find(f)
 			if index != -1 :
-				flag = 1
 				data = " " + data[index + len(f):]
 				data = removeNonNumeric(data).split()
 				if(len(data) < 2):
-					return data
+					return data + " less"
 				return data
 		for f in self.operator_list :
 			index = data.find(f)
 			if index != -1:
-				flag = 1
 				return removeNonNumeric(removeSubstring(data,f)).split()
-				return data
-		if not flag:
-			return data + " not possible"
+		return data + " not possible"
 
 	
 
@@ -57,7 +52,7 @@ class calculation :
 
 
 if __name__ =="__main__":
-	c = calculation()
+	c = interpreter()
 	d = raw_input()
 	d = " " + d + " "
-	print c.function(d)
+	print c.interpret(d)
