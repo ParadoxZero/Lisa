@@ -10,6 +10,7 @@
 import time
 import sys
 import Interpreter
+import splash
 
 class Lisa :
 
@@ -22,10 +23,11 @@ class Lisa :
 		print ""	
 	def run(self) :
 		while True:
-			user_input = raw_input()
-			lisa_reply = Interpreter.interpreter().interpret(user_input)
+			user_input = raw_input("You :")
+			lisa_reply = Interpreter.interpreter().interpret(" " + user_input)
 			self.display(lisa_reply)
 		
 
 if __name__ == "__main__":
+	splash.splash()
 	Lisa().run()
