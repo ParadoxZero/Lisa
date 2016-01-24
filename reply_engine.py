@@ -1,5 +1,5 @@
 from chatterbot import ChatBot
-import chatterbot
+
 
 '''
 chatbot = ChatBot("Lisa",database="../data.db")

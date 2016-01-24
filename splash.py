@@ -36,5 +36,5 @@ def splash():
 	type("Training done (100%) OK\n",0.05)
 	type("Deploying Lisa ",0.05)
 	type("......................\n\n\n")
-	type("Lisa Version 2.6 \n")
+	type("Lisa Version 2.7 \n")
 	type("Running natural language interface.\n\n")

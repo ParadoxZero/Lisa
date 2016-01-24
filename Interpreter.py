@@ -4,6 +4,7 @@
 #
 #
 
+import testChat
 def removeSubstring(data,str):
 	index = data.find(str)
 	if index==-1:
@@ -24,6 +25,8 @@ def removeNonNumeric(data):
 
 
 class interpreter :
+	reply = testChat.reply_engine()
+	reply.init()
 	# these are the names of operations Lisa can detect
 	function_list = [' add ', ' subtract ', ' multiply ' , ' divide ']
 	operator_list = ['+','-','*','/']
@@ -42,7 +45,7 @@ class interpreter :
 			index = data.find(f)
 			if index != -1:
 				return removeNonNumeric(removeSubstring(data,f)).split()
-		return "Undefined input: no data available"
+		return  self.reply.get_reply(data) #"Undefined input: no data available"
 
 	
 
