@@ -10,7 +10,7 @@
 import time
 import sys
 import os
-#import Interpreter
+import Interpreter
 import splash
 import reply_engine
 class Lisa :
@@ -18,8 +18,7 @@ class Lisa :
 	def init(self):
 		os.system("clear")
 		#splash.splash()
-		self.lisa_reply = reply_engine.reply_engine()
-		self.lisa_reply.init()
+		self.lisa_reply = Interpreter.interpreter() 
 	def display(self,data):
 		sys.stdout.write("Lisa : ")
 		for d in data:
@@ -29,8 +28,8 @@ class Lisa :
 		print ""	
 	def run(self) :
 		while True:
-			user_input = raw_input("You :")
-			self.display(self.lisa_reply.get_reply(user_input))
+			user_input = raw_input("You : ")
+			self.display(self.lisa_reply.interpret(" "+ user_input))
 		
 
 if __name__ == "__main__":
