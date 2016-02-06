@@ -20,7 +20,9 @@ def removeNonNumeric(data):
 	tmp = ""
 	while(i < len(data)):
 		if(data[i] in ['1','2','3','4','5','6','7','8','9','0',' ']):
-				tmp = tmp + data[i]
+				tmp = tmp  + data[i]
+		else:
+			tmp = tmp + " "
 		i = i + 1	
 	return tmp
 
@@ -29,7 +31,7 @@ class interpreter :
 	reply = reply_engine.reply_engine()
 	reply.init()
 	# these are the names of operations Lisa can detect
-	function_list = [' add ', ' sum ', ' subtract ',' diffrerence ', ' multiply ' ,' product ' ,' divide ', ' quotent ']
+	function_list = [' add ', ' sum ', ' subtract ',' difference ', ' multiply ' ,' product ' ,' divide ', ' quotent ']
 	operator_list = ['+','-','*','/']
 	# the words Lisa should ignore from list to get purely numeric string
 	#unwanted_words = [' and ', ' by ', ' from ' ,' to ',' them ']	
@@ -41,9 +43,9 @@ class interpreter :
 			if index != -1 :
 				data = " " + data[index + len(f):]
 				data = removeNonNumeric(data).split()
+				print data, operator
 				if(len(data) < 2):
 					return "The command needs at least 2 numbers"
-				#print data, operator
 				rep = "The answer is " + str(Logics.calculate(data,operator))
 				return rep
 		for f in self.operator_list :
@@ -55,10 +57,10 @@ class interpreter :
 					data[i] = removeNonNumeric(data[i])
 					i = i +1
 				operator = self.operator_list.index(f)
-				print data ,operator
 				rep = "The answer is " + str(Logics.calculate(data,operator))
 				return rep
-		return  self.reply.get_reply(data) #"Undefined input: no data available"
+		data_ab = data[1:]
+		return  self.reply.get_reply(data_ab) #"Undefined input: no data available"
 
 	
 

@@ -11,14 +11,21 @@ class reply_engine :
 		    logic_adapter="chatterbot.adapters.logic.ClosestMatchAdapter",
 		    io_adapter="chatterbot.adapters.io.NoOutputAdapter",
 		    database="database/database.db")
-		self.bot.train(
-    		"chatterbot.corpus.english"
-)
 	def get_reply(self,data):
 		return self.bot.get_response(data)
+	def train(self):
+		trainingData = []
+		print "Input Converstion"
+		while True:
+			data = raw_input()
+			if data == "#":
+				break
+			trainingData.append(data)
+		self.bot.train(trainingData)
+
 
 
 if __name__ == "__main__":
 	r = reply_engine()
 	r.init()
-	print r.get_reply("hello")
+	r.train()
